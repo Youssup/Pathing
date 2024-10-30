@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://breuxo3x378nw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jn76s"]
+[ext_resource type="Texture2D" uid="uid://de2rbswl502w3" path="res://assets/Heroes/Knight/Idle/Idle-Sheet.png" id="1_lfvqw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmrsw"]
+atlas = ExtResource("1_lfvqw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blt48"]
+atlas = ExtResource("1_lfvqw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlrud"]
+atlas = ExtResource("1_lfvqw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13y68"]
+atlas = ExtResource("1_lfvqw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqc3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmrsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blt48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlrud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13y68")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6747x"]
+size = Vector2(9.5, 20)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_jn76s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_cqc3s")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.279483
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -10)
+shape = SubResource("RectangleShape2D_6747x")
